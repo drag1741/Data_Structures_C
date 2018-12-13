@@ -1,6 +1,6 @@
 //link.c
 //
-//file to learn linked_lists in c
+//file to implement doubly linked lists in c
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,11 +11,9 @@ struct List* init_list( int data){
     struct List *ret_value;
     ret_value = malloc(sizeof(struct List));
     //set members
-    ret_value->data = data; 
-    ret_value->next = NULL;
-    ret_value->prev = NULL;
+    ret_value->head = malloc(sizeof(struct Node*));
     //Function pointers
-    ret_value->add_link_end = &add_link_end_imp;
+    ret_value->add_node_end = &add_node_end_imp;
     ret_value->remove_element = &remove_element_imp;
     ret_value->delete_list = &delete_list_imp;
     ret_value->print_list = &print_list_imp;
@@ -23,19 +21,19 @@ struct List* init_list( int data){
 
     return ret_value;
 }
-//add a link to the end of link list starting at head
-void add_link_end_imp(struct List *head, int new_data){
+//add a node to the end of list starting at head
+void add_node_end_imp(struct List *head, int new_data){
     struct List *temp = head;
     //initialize new Link
     struct List *new_Link;
     new_Link = malloc(sizeof(struct List));
     new_Link->next = NULL;
     new_Link->data = new_data;
-    //find last link in list
+    //find last node in list
     while(temp->next != NULL){
         temp = temp->next;
     }
-    //add new_link to end of list
+    //add new_node to end of list
     temp->next = new_Link; 
 }
 //remove element of list with list->data == data
