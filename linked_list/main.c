@@ -1,10 +1,13 @@
-//linked_list.c
-//
-//file to learn linked_lists in c
+/* File:main.c
+   Author: Jay Drage
+
+   Synapse:file to learn linked_lists in c
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "link.h"
+
+#include "list.h"
 #include "utility.h"
 
 int main(){
