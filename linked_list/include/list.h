@@ -19,18 +19,17 @@ struct List{
 	int size;
 
     //Function pointers
-    void (*add_node_end)(struct List*, void*);
+    void (*add_node_end)(struct List*, struct Node*);
     void (*remove_element)(struct List*, void*);
     void (*delete_list)(struct List*);
     void (*print_list)(struct List*);
-    void (*bubble_sort)(struct List*);
 };
 
 //initialize list
-struct List* init_List( void *data );
+struct List* init_List(struct Node *node);
 
 //add a node to the end of list starting at head
-void add_node_end_imp(struct List *head, void *data);
+void add_node_end_imp(struct List *list, struct Node *node);
 
 //remove element of list with list->data == data
 void remove_element_imp( struct List* head, void *data);
@@ -40,8 +39,5 @@ void delete_list_imp(struct List *head);
 
 //print list from head to tail
 void print_list_imp(struct List *head);
-
-//use bubble sort to sort list
-void bubble_sort_imp(struct List *head);
 
 #endif
