@@ -20,6 +20,28 @@ struct Node* init_Node(void *data, enum Type type){
 	ret_value->data = data;
 	ret_value->index = 0;
 	ret_value->type = type;
+    //set function pointers
+    ret_value->print_node = &print_node_imp;
 	//return
 	return ret_value;
+}
+
+//print out data from node
+void print_node_imp(struct Node *node){
+    switch(node->type){
+        case character:
+            fprintf(stdout,"character(%d):%3c\n",node->type,*(int*)node->data);
+            break;
+        case item:
+            fprintf(stdout,"item(%d):%3c\n",node->type,*(int*)node->data);
+            break;
+        case monster:
+            fprintf(stdout,"monster(%d):%3c\n",node->type,*(int*)node->data);
+            break;
+        case floor:
+            break;
+        case integer:
+            fprintf(stdout,"integer(%d):%3d\n",node->type,*(int*)node->data);
+            break;
+    }
 }

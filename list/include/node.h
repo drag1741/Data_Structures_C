@@ -23,9 +23,11 @@ struct Node{
 	enum Type type;
 	
 	//functions
+    void (*print_node)(struct Node*);
 };
 
 //init a new Node with void *data == data
 struct Node* init_Node(void* data, enum Type type);
-
+//print out data from node
+void print_node_imp(struct Node *node);
 #endif
